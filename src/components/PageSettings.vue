@@ -39,22 +39,24 @@
 							<td>DHCP</td>
 							<td><SlideSwitch v-model="config.wifi.client_dhcp_enabled"></SlideSwitch></td>
 						</tr>
-						<tr v-if="config.wifi.client_dhcp_enabled">
-							<td>IP</td>
-							<td><TextInput v-model="config.wifi.client_ip"></TextInput></td>
-						</tr>
-						<tr v-if="config.wifi.client_dhcp_enabled">
-							<td>Netmask</td>
-							<td><TextInput v-model="config.wifi.client_mask"></TextInput></td>
-						</tr>
-						<tr v-if="config.wifi.client_dhcp_enabled">
-							<td>Gateway</td>
-							<td><TextInput v-model="config.wifi.client_gateway"></TextInput></td>
-						</tr>
-						<tr v-if="config.wifi.client_dhcp_enabled">
-							<td>DNS</td>
-							<td><TextInput v-model="config.wifi.client_dns"></TextInput></td>
-						</tr>
+						<template  v-if="!config.wifi.client_dhcp_enabled">
+							<tr>
+								<td>IP</td>
+								<td><TextInput v-model="config.wifi.client_ip"></TextInput></td>
+							</tr>
+							<tr>
+								<td>Netmask</td>
+								<td><TextInput v-model="config.wifi.client_mask"></TextInput></td>
+							</tr>
+							<tr>
+								<td>Gateway</td>
+								<td><TextInput v-model="config.wifi.client_gateway"></TextInput></td>
+							</tr>
+							<tr>
+								<td>DNS</td>
+								<td><TextInput v-model="config.wifi.client_dns"></TextInput></td>
+							</tr>
+						</template>
 					</table>
 				</td>
 			</tr>
