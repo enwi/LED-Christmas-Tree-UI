@@ -3,8 +3,8 @@
 
 		<table class="container">
 			<tr>
-				<td colspan="2" style="background-color: red;color: yellow; height: 200px">
-					TREE Photo here
+				<td colspan="2" style="height: 200px;">
+					<Tree v-model="status.lights.enabled" style="margin: auto"></Tree>
 				</td>
 			</tr>
 			<tr>
@@ -47,11 +47,13 @@
 	import Slider from "@/components/inputs/Slider";
 	// import Selector from "@/components/inputs/Selector";
 	import {api_mixin} from "@/api_mixin";
+	import Tree from "@/components/Tree";
 
 	export default {
 		name: 'PageHome',
 		mixins: [api_mixin],
 		components: {
+			Tree,
 			SlideSwitch,
 			// Selector,
 			Slider
