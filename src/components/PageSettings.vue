@@ -93,6 +93,19 @@
 					</table>
 				</td>
 			</tr>
+
+			<tr>
+				<td class="border" style="border-color: #EF5350; border-width: 2px">OTA</td>
+				<td class="border" style="border-color: #EF5350; border-width: 2px">
+					<form method="POST" action="/ota" enctype="multipart/form-data">
+						<label class="file">
+							<input type="file" accept=".bin, application/octet-stream" name="data"/>
+							<span class="file-custom"></span>
+						</label>
+						<input type="submit" name="upload" value="Upload" title="Upload Files">
+					</form>
+				</td>
+			</tr>
 		</table>
 	</div>
 </template>
