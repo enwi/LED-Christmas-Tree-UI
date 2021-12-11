@@ -47,13 +47,12 @@ let config_data = {
 		client_mask: "255.255.255.0",
 		client_gateway: "192.168.0.1",
 		client_dns: "192.168.0.1",
-		client_hostname: "LedChristmasTree",
 		ap_enabled: true,
 		ap_ssid: "LedChristmasTree",
 		ap_password: "",
-		ap_ip: "192.168.4.1",
-		ap_network: "192.168.4.0",
-		ap_mask: "255.255.255.0"
+		// ap_ip: "192.168.4.1",
+		// ap_network: "192.168.4.0",
+		// ap_mask: "255.255.255.0"
 	},
 }
 

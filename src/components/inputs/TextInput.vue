@@ -1,25 +1,22 @@
 <template>
-	<select :disabled="disabled" @input="$emit('input', $event.target.value)">
-		<option :selected="value === choice.value" v-for="choice in choices" :key="choice.value" :value="choice.value">{{ choice.name }}</option>
-	</select>
+	<input type="text" :disabled="disabled" @input="$emit('input', $event.target.value)" :value="value">
 </template>
 
 <script>
 	export default {
-		name: "Selector",
+		name: "TextInput",
 		props: {
 			disabled: {type:Boolean, default: false},
-			choices: {type:Array, required: true},
 			value: { required: true}
 		}
 	}
 </script>
 
 <style scoped>
-	select:disabled {
+	input:disabled {
 		opacity: 0.25;
 	}
-	select {
+	input {
 		padding: 8px;
 		font-size: 0.9rem;
 		box-sizing:border-box;
@@ -28,7 +25,7 @@
 		border-radius: 5px;
 		-webkit-appearance: none;
 	}
-	select {
+	input {
 		-webkit-appearance: menulist;
 	}
 </style>

@@ -7,7 +7,16 @@
 			<h1>LED Christmas tree</h1>
 		</div>
 		<div class="actions">
-			<h1>SET</h1>
+			<div v-if="$route.name !== 'Config'">
+				<router-link  to="/config">
+					<h1>SET</h1>
+				</router-link>
+			</div>
+			<div v-else>
+				<router-link to="/home">
+					<h1>HOME</h1>
+				</router-link>
+			</div>
 		</div>
 	</div>
 </template>

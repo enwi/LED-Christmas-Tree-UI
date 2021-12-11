@@ -1,6 +1,6 @@
 <template>
 	<label class="switch" style="margin: 0 5px">
-		<input :disabled="disabled"  v-on:input="$emit('input', $event.target.checked)" type="checkbox" >
+		<input :disabled="disabled" :checked="value"  v-on:input="$emit('input', $event.target.checked)" type="checkbox" >
 		<span class="slider round"></span>
 	</label>
 </template>
@@ -9,7 +9,8 @@
 	export default {
 		name: "SlideSwitch",
 		props: {
-			disabled: {type:Boolean, default: false}
+			disabled: {type:Boolean, default: false},
+			value:  {type:Boolean, required: true},
 		}
 	}
 </script>
