@@ -25,13 +25,14 @@ let status_data = {
 	},
 	network: {
 		wifi_client: {
-			"status": "connected", //Can be either disabled or connected or disconnected
+			"status": "disabled", //Can be either disabled or connected or disconnected
 			"ip": "111.222.333.444",
 			"netmask": "255.255.255.0",
 			"dns": "1.3.4.5"
 		},
 		wifi_ap: {
-			"status": "disabled", //Can be either disabled or enabled
+			"status": "enabled", //Can be either disabled or enabled
+			"ip": "111.222.333.444",
 		},
 		mac: "00:DE:AD:BE:EF:00",
 	},

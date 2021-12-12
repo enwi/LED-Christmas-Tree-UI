@@ -24,7 +24,8 @@ export const api_mixin = {
 						dns: "1.3.4.5"
 					},
 					wifi_ap: {
-						"status": "disabled", //Can be either disabled or enabled
+						status: "disabled", //Can be either disabled or enabled
+						ip: "111.222.333.444",
 					},
 					mac: "00:DE:AD:BE:EF:00",
 				},

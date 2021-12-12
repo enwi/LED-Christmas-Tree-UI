@@ -12,7 +12,7 @@
 					<b>Wifi</b>:
 					{{status.network.wifi_ap.status === "enabled" ? "Ap" : "Client" }}
 					{{ status.network.wifi_ap.status === "enabled" ? "enabled" : status.network.wifi_client.status }}
-					({{ status.network.wifi_ap.status === "enabled" ? config.wifi.ap_ip : status.network.wifi_client.ip }})
+					({{ status.network.wifi_ap.status === "enabled" ? status.network.wifi_ap.ip : status.network.wifi_client.ip }})
 					<br>
 					<b>MQTT</b>:
 					{{ status.mqtt.status | capitalize }}
