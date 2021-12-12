@@ -1,11 +1,10 @@
 // eslint-disable-next-line no-unused-vars
-import { createServer,Response  } from 'miragejs'
+import {createServer} from 'miragejs'
 
 const startTime = Date.now()
 let status_data = {
 	uptime: 1200,
 	lights: {
-		enabled: true,
 		brightness: 8,
 		speed: 2,
 		effect: 1,
@@ -76,14 +75,12 @@ export function makeServer () {
 				let attrs = JSON.parse(request.requestBody)
 				status_data.lights.brightness = attrs.brightness
 				status_data.lights.speed = attrs.speed
-				status_data.lights.enabled = attrs.enabled
 				status_data.lights.effect = attrs.effect
 				return "OK"
 			})
 
 			this.post("/api/config", (schema, request) => {
-				let attrs = JSON.parse(request.requestBody)
-				config_data = attrs
+				config_data = JSON.parse(request.requestBody)
 				return "OK"
 			})
 

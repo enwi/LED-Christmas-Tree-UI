@@ -6,7 +6,6 @@ export const api_mixin = {
 			status: {
 				uptime: 0,
 				lights: {
-					enabled: false,
 					brightness: 0,
 					speed: 0,
 					effect: 0,
@@ -90,7 +89,6 @@ export const api_mixin = {
 
 		api_post_set_leds() {
 			axios.post("/api/set_leds", {
-				enabled: this.status.lights.enabled,
 				brightness: this.status.lights.brightness,
 				speed: this.status.lights.speed,
 				effect: this.status.lights.effect

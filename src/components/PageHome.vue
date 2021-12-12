@@ -4,7 +4,7 @@
 		<table class="container">
 			<tr>
 				<td colspan="2" style="height: 200px;">
-					<Tree v-model="status.lights.enabled" style="margin: auto"></Tree>
+					<Tree :value="status.lights.effect !== 0" style="margin: auto"></Tree>
 				</td>
 			</tr>
 			<tr>
@@ -19,8 +19,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border">Enabled?</td>
-				<td class="border"><SlideSwitch @input="api_post_set_leds" v-model="status.lights.enabled"></SlideSwitch></td>
+				<td class="border">Effect</td>
+				<td class="border">
+					<Selector :value="effect" @input="set_effect" :choices="effects">
+					</Selector>
+				</td>
 			</tr>
 			<tr>
 				<td class="border">Brightness</td>
@@ -29,13 +32,6 @@
 			<tr>
 				<td class="border">Speed</td>
 				<td class="border"><Slider @input="api_post_set_leds" v-model="status.lights.speed" :min="0" :max="4"></Slider></td>
-			</tr>
-			<tr>
-				<td class="border">Effect</td>
-				<td class="border">
-					<Selector :value="effect" @input="set_effect" :choices="effects">
-					</Selector>
-				</td>
 			</tr>
 		</table>
 	</div>
