@@ -57,6 +57,7 @@ export const api_mixin = {
 	},
 	mounted() {
 		this.reload_status();
+		this.reload_config();
 		this.$root.$on('reload_btn', this.reloadevent_handler)
 	},
 	unmounted() {
@@ -99,5 +100,14 @@ export const api_mixin = {
 				// this.$toasts.push({ type: 'error', message: 'A network error occured while fetching status: '+error, duration:10000 })
 			});
 		},
+
+		api_post_save() {
+			axios.post("/api/config", this.config).then(response => {
+				this.reload_config();
+				console.info(response.data)
+			}).catch(error => {
+				console.error(error)
+			});
+		}
 	}
 }

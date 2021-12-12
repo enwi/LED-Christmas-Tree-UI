@@ -69,6 +69,12 @@ export function makeServer () {
 				return "OK"
 			})
 
+			this.post("/api/config", (schema, request) => {
+				let attrs = JSON.parse(request.requestBody)
+				config_data = attrs
+				return "OK"
+			})
+
 			this.get("/api/config", () => {
 				return config_data
 			})

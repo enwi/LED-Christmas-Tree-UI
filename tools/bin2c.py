@@ -35,44 +35,37 @@ header = """#include <stddef.h>
 
 use_progmem = False
 
-def output_bin(in_name, h, c):
+def output_bin(in_name, h):
     basename = os.path.basename(in_name)
     symbol_name = re.sub(r"\W", "_", basename)
     i = open(in_name, "rb")
 
     if use_progmem:
-        h.write("extern const unsigned char {}_start[] PROGMEM;\n".format(symbol_name))
+        h.write("#include <pgmspace.h>\n")
+        h.write("const unsigned char {}_start[] PROGMEM = {{\n".format(symbol_name))
     else:
-        h.write("extern const unsigned char {}_start[];\n".format(symbol_name))
-
-    h.write("extern const size_t {}_size;\n".format(symbol_name))
-
-    if use_progmem:
-        c.write("#include <pgmspace.h>\n")
-        c.write("const unsigned char {}_start[] PROGMEM = {{\n".format(symbol_name))
-    else:
-        c.write("const unsigned char {}_start[] = {{\n".format(symbol_name))
+        h.write("const unsigned char {}_start[] = {{\n".format(symbol_name))
 
     while True:
         block = i.read(16)
         if len(block) < 16:
             if len(block):
-                c.write("\t")
+                h.write("\t")
                 for b in block:
                     # Python 2/3 compat
                     if type(b) is str:
                         b = ord(b)
-                    c.write("0x{:02X}, ".format(b))
-                c.write("\n")
+                    h.write("0x{:02X}, ".format(b))
+                h.write("\n")
             break
-        c.write("\t0x{:02X}, 0x{:02X}, 0x{:02X}, 0x{:02X}, "
+        h.write("\t0x{:02X}, 0x{:02X}, 0x{:02X}, 0x{:02X}, "
                 "0x{:02X}, 0x{:02X}, 0x{:02X}, 0x{:02X}, "
                 "0x{:02X}, 0x{:02X}, 0x{:02X}, 0x{:02X}, "
                 "0x{:02X}, 0x{:02X}, 0x{:02X}, 0x{:02X},\n"
                 .format(*struct.unpack("BBBBBBBBBBBBBBBB", block)))
     i.close()
-    c.write("};\n")
-    c.write("const size_t {0}_size = sizeof({0}_start);\n".format(symbol_name))
+    h.write("};\n")
+    h.write("const size_t {0}_size = sizeof({0}_start);\n".format(symbol_name))
 
 
 def output_set(out_name, in_names):
@@ -83,15 +76,11 @@ def output_set(out_name, in_names):
         h.write("#include <pgmspace.h>\n")
     h.write(header)
 
-    c = open(out_name + ".c", "w")
-    c.write(header)
-
     for in_name in in_names:
-        output_bin(in_name, h, c)
+        output_bin(in_name, h)
 
     h.write("\n#endif\n")
     h.close()
-    c.close()
 
 
 def _main():

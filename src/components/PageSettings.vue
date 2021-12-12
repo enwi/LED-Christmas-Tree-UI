@@ -106,6 +106,14 @@
 					</form>
 				</td>
 			</tr>
+
+			<tr>
+				<td colspan="2">
+					<button @click="api_post_save">
+						Save config
+					</button>
+				</td>
+			</tr>
 		</table>
 	</div>
 </template>
@@ -191,5 +199,20 @@
 
 	.align-center {
 		align-items: center;
+	}
+
+
+	button {
+		background-color: #388E3C;
+		color: #fcfcfc;
+
+		padding: 10px;
+		font-size: 1rem;
+
+		width: 100%;
+		border: 1px solid #2e9035;
+		border-radius: 5px;
+
+		cursor: pointer;
 	}
 </style>
