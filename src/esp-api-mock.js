@@ -8,7 +8,18 @@ let status_data = {
 		enabled: true,
 		brightness: 8,
 		speed: 2,
-		effect: "azerty"
+		effect: 1,
+		effects: [
+			"off",
+			"solid",
+			"twoColorChange",
+			"gradientHorizontal",
+			"gradientVertical",
+			"rainbowHorizontal",
+			"rainbowVertical",
+			"runningLight",
+			"twinkleFox"
+		]
 	},
 	mqtt: {
 		"status": "connected", //Can be either disabled or connected or disconnected
@@ -66,6 +77,7 @@ export function makeServer () {
 				status_data.lights.brightness = attrs.brightness
 				status_data.lights.speed = attrs.speed
 				status_data.lights.enabled = attrs.enabled
+				status_data.lights.effect = attrs.effect
 				return "OK"
 			})
 

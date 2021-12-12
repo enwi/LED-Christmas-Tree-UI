@@ -9,7 +9,10 @@ export const api_mixin = {
 					enabled: false,
 					brightness: 0,
 					speed: 0,
-					effect: "----"
+					effect: 0,
+					effects: [
+						"off",
+					]
 				},
 				mqtt: {
 					status: "disabled", //Can be either disabled or connected or disconnected
@@ -90,7 +93,7 @@ export const api_mixin = {
 				enabled: this.status.lights.enabled,
 				brightness: this.status.lights.brightness,
 				speed: this.status.lights.speed,
-				// effect: this.status.lights.effect
+				effect: this.status.lights.effect
 			}).then(response => {
 				if(response.data === "OK") {
 					console.info("Updated light config")

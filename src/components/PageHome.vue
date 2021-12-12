@@ -30,13 +30,13 @@
 				<td class="border">Speed</td>
 				<td class="border"><Slider @input="api_post_set_leds" v-model="status.lights.speed" :min="0" :max="4"></Slider></td>
 			</tr>
-<!--			<tr>-->
-<!--				<td class="border">Effect</td>-->
-<!--				<td class="border">-->
-<!--					<Selector :choices="[{name:'Test', value:'test'}]">-->
-<!--					</Selector>-->
-<!--				</td>-->
-<!--			</tr>-->
+			<tr>
+				<td class="border">Effect</td>
+				<td class="border">
+					<Selector :value="effect" @input="set_effect" :choices="effects">
+					</Selector>
+				</td>
+			</tr>
 		</table>
 	</div>
 </template>
@@ -45,9 +45,10 @@
 
 	import SlideSwitch from "@/components/inputs/SlideSwitch";
 	import Slider from "@/components/inputs/Slider";
-	// import Selector from "@/components/inputs/Selector";
+	import Selector from "@/components/inputs/Selector";
 	import {api_mixin} from "@/api_mixin";
 	import Tree from "@/components/Tree";
+	import {camel_to_title, capitalize} from "@/utils";
 
 	export default {
 		name: 'PageHome',
@@ -55,7 +56,7 @@
 		components: {
 			Tree,
 			SlideSwitch,
-			// Selector,
+			Selector,
 			Slider
 		},
 		data () {
@@ -63,8 +64,24 @@
 				polling: null
 			}
 		},
+		computed: {
+			effects() {
+				return this.status.lights.effects.map((value) => {
+					return {
+						name: camel_to_title(value),
+						value: value
+					}
+				})
+			},
+			effect() {
+				return this.effects[this.status.lights.effect].value
+			}
+		},
 		methods: {
-
+			set_effect(event){
+				this.status.lights.effect = this.status.lights.effects.indexOf(event)
+				this.api_post_set_leds();
+			}
 		},
 
 		mounted () {

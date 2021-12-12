@@ -34,3 +34,14 @@ export function sec_to_human(seconds) {
 
 	return d+"d "+h+":"+m+":"+s
 }
+
+/**
+ * Generates a readable string form a camel case string
+ * @function
+ * @param {String} text - The input string
+ * @return {String} The readable string
+ */
+export function camel_to_title(text) {
+	const result = text.replace(/([A-Z])/g, " $1");
+	return result.charAt(0).toUpperCase() + result.slice(1)
+}
