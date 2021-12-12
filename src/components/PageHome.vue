@@ -48,7 +48,7 @@
 	import Selector from "@/components/inputs/Selector";
 	import {api_mixin} from "@/api_mixin";
 	import Tree from "@/components/Tree";
-	import {camel_to_title, capitalize} from "@/utils";
+	import {camel_to_title} from "@/utils";
 
 	export default {
 		name: 'PageHome',
