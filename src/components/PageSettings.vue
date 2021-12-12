@@ -87,7 +87,7 @@
 							</tr>
 							<tr>
 								<td>Password</td>
-								<td><TextInput v-model="config.mqtt.password"></TextInput></td>
+								<td><TextInput :hidden="true" v-model="config.mqtt.password"></TextInput></td>
 							</tr>
 						</template>
 					</table>
