@@ -104,8 +104,13 @@ export const api_mixin = {
 
 		api_post_save() {
 			axios.post("/api/config", this.config).then(response => {
+				if(response.data === "OK") {
+					alert("Config updated the ESP will reboot");
+				} else {
+					alert("Error while updating the config: "+response.data);
+					console.error(response.data)
+				}
 				this.reload_config();
-				console.info(response.data)
 			}).catch(error => {
 				console.error(error)
 			});
