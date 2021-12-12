@@ -39,7 +39,6 @@
 
 <script>
 
-	import SlideSwitch from "@/components/inputs/SlideSwitch";
 	import Slider from "@/components/inputs/Slider";
 	import Selector from "@/components/inputs/Selector";
 	import {api_mixin} from "@/api_mixin";
@@ -51,7 +50,6 @@
 		mixins: [api_mixin],
 		components: {
 			Tree,
-			SlideSwitch,
 			Selector,
 			Slider
 		},
