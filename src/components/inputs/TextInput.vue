@@ -1,5 +1,5 @@
 <template>
-	<input type="text" :disabled="disabled" @input="$emit('input', $event.target.value)" :value="value">
+	<input :type="hidden ? 'password': ''" :disabled="disabled" @input="$emit('input', $event.target.value)" :value="value">
 </template>
 
 <script>
@@ -7,6 +7,7 @@
 		name: "TextInput",
 		props: {
 			disabled: {type:Boolean, default: false},
+			hidden: {type:Boolean, default: false},
 			value: { required: true}
 		}
 	}

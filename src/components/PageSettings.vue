@@ -18,7 +18,7 @@
 						</tr>
 						<tr>
 							<td >Password</td>
-							<td><TextInput v-model="config.wifi.ap_password"></TextInput></td>
+							<td><TextInput :hidden="true" v-model="config.wifi.ap_password"></TextInput></td>
 						</tr>
 					</table>
 				</td>
@@ -33,7 +33,7 @@
 						</tr>
 						<tr>
 							<td >Password</td>
-							<td><TextInput v-model="config.wifi.client_password"></TextInput></td>
+							<td><TextInput :hidden="true" v-model="config.wifi.client_password"></TextInput></td>
 						</tr>
 						<tr>
 							<td>DHCP</td>
