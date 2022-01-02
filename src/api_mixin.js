@@ -11,6 +11,10 @@ export const api_mixin = {
 					effect: 0,
 					effects: [
 						"off",
+					],
+					color: 0,
+					colors: [
+						"none",
 					]
 				},
 				mqtt: {
@@ -73,7 +77,7 @@ export const api_mixin = {
 		},
 		reload_config() {
 			axios.get("/api/config").then(response => {
-				this.$set(this,"config",response.data)
+				this.$set(this, "config", response.data)
 			}).catch(error => {
 				console.error(error)
 				// this.$toasts.push({ type: 'error', message: 'A network error occured while fetching status: '+error, duration:10000 })
@@ -81,7 +85,7 @@ export const api_mixin = {
 		},
 		reload_status() {
 			axios.get("/api/status").then(response => {
-				this.$set(this,"status",response.data)
+				this.$set(this, "status", response.data)
 			}).catch(error => {
 				console.error(error)
 				// this.$toasts.push({ type: 'error', message: 'A network error occured while fetching status: '+error, duration:10000 })
@@ -92,9 +96,10 @@ export const api_mixin = {
 			axios.post("/api/set_leds", {
 				brightness: this.status.lights.brightness,
 				speed: this.status.lights.speed,
-				effect: this.status.lights.effect
+				effect: this.status.lights.effect,
+				color: this.status.lights.color
 			}).then(response => {
-				if(response.data === "OK") {
+				if (response.data === "OK") {
 					console.info("Updated light config")
 				}
 			}).catch(error => {
@@ -105,10 +110,10 @@ export const api_mixin = {
 
 		api_post_save() {
 			axios.post("/api/config", this.config).then(response => {
-				if(response.data === "OK") {
+				if (response.data === "OK") {
 					alert("Config updated the ESP will reboot");
 				} else {
-					alert("Error while updating the config: "+response.data);
+					alert("Error while updating the config: " + response.data);
 					console.error(response.data)
 				}
 				this.reload_config();

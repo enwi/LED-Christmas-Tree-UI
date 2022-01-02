@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import {createServer} from 'miragejs'
+import { createServer } from 'miragejs'
 
 const startTime = Date.now()
 let status_data = {
@@ -69,7 +69,7 @@ let config_data = {
 
 
 
-export function makeServer () {
+export function makeServer() {
 	createServer({
 		routes() {
 			this.post("/api/set_leds", (schema, request) => {
