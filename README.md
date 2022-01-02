@@ -5,7 +5,7 @@ The build is automatic (via github actions) and the header to include in the web
 The header contains the gziped build of the vuejs project 
 
 ## Screenshot
-![chrome_2021-12-13_18-38-45](https://user-images.githubusercontent.com/17061996/145861251-56230b4b-9293-4dee-b171-dcd1be3a8d73.png)
+![chrome 2022-01-02 214555](https://user-images.githubusercontent.com/25170066/147889063-e68401ad-701c-4c55-8483-d66af68f47b8.png)
 ![chrome_2021-12-13_18-39-04](https://user-images.githubusercontent.com/17061996/145861297-a6b258ae-130a-4cdd-856d-9475546481e0.png)
 
 ## Contribute
