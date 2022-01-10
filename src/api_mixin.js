@@ -35,7 +35,6 @@ export const api_mixin = {
 				},
 			},
 			config: {
-
 				mqtt: {
 					enabled: false,
 					server: "111.222.333.444",
@@ -59,7 +58,8 @@ export const api_mixin = {
 					ap_ssid: "LedChristmasTree",
 					ap_password: "",
 				},
-			}
+			},
+			msg: "",
 		}
 	},
 	mounted() {
@@ -80,13 +80,15 @@ export const api_mixin = {
 				this.$set(this, "config", response.data)
 			}).catch(error => {
 				console.error(error)
-				// this.$toasts.push({ type: 'error', message: 'A network error occured while fetching status: '+error, duration:10000 })
+				// this.$toasts.push({ type: 'error', message: 'A network error occured while fetching config: '+error, duration:10000 })
 			});
 		},
 		reload_status() {
 			axios.get("/api/status").then(response => {
+				this.$set(this, "msg", "")
 				this.$set(this, "status", response.data)
 			}).catch(error => {
+				this.$set(this, "msg", "Tree unreachable/Network disconnected!")
 				console.error(error)
 				// this.$toasts.push({ type: 'error', message: 'A network error occured while fetching status: '+error, duration:10000 })
 			});
@@ -104,7 +106,7 @@ export const api_mixin = {
 				}
 			}).catch(error => {
 				console.error(error)
-				// this.$toasts.push({ type: 'error', message: 'A network error occured while fetching status: '+error, duration:10000 })
+				// this.$toasts.push({ type: 'error', message: 'A network error occured while posting set_leds: '+error, duration:10000 })
 			});
 		},
 

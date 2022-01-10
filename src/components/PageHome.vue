@@ -23,6 +23,8 @@
           <br />
           <b>MQTT</b>:
           {{ status.mqtt.status | capitalize }}
+          <br />
+          <b>{{ msg === "" ? "" : msg }}</b>
         </td>
       </tr>
       <tr>
