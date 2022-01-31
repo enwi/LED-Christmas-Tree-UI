@@ -25,10 +25,10 @@
             <tr>
               <td>Password</td>
               <td>
-                <TextInput
-                  :hidden="true"
+                <FakePwInput
+                  :has_value="config.wifi.ap_has_password"
                   v-model="config.wifi.ap_password"
-                ></TextInput>
+                ></FakePwInput>
               </td>
             </tr>
           </table>
@@ -45,10 +45,10 @@
             <tr>
               <td>Password</td>
               <td>
-                <TextInput
-                  :hidden="true"
+                <FakePwInput
+                  :has_value="config.wifi.ap_has_password"
                   v-model="config.wifi.client_password"
-                ></TextInput>
+                ></FakePwInput>
               </td>
             </tr>
             <tr>
