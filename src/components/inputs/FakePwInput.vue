@@ -11,15 +11,16 @@
         props: {
             disabled: { type: Boolean, default: false },
             has_value: { type: Boolean, default: false },
-            default_value: { default: "not set" }
+            default_value: { default: "not set" },
+            v
         },
         computed: {
             value: {
                 get: function () {
-                    return this.has_value ? value : default_value;
+                    return this.has_value ? v : default_value;
                 },
                 set: function (newValue) {
-                    this.value = newValue;
+                    this.v = newValue;
                     this.has_value = true;
                 }
             }
