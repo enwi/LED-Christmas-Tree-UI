@@ -166,6 +166,7 @@ import Selector from "@/components/inputs/Selector";
 import { api_mixin } from "@/api_mixin";
 import SlideSwitch from "@/components/inputs/SlideSwitch";
 import TextInput from "@/components/inputs/TextInput";
+import FakePwInput from "@/components/inputs/FakePwInput";
 import NumberInput from "@/components/inputs/NumberInput";
 
 export default {
@@ -175,6 +176,7 @@ export default {
     NumberInput,
     TextInput,
     SlideSwitch,
+    FakePwInput,
     Selector,
     // Slider
   },

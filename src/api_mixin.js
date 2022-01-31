@@ -54,9 +54,11 @@ export const api_mixin = {
 					client_mask: "255.255.255.0",
 					client_gateway: "111.222.333.555",
 					client_dns: "111.222.333.555",
+					client_has_password: false,
 					ap_enabled: true,
 					ap_ssid: "LedChristmasTree",
 					ap_password: "",
+					ap_has_password: false
 				},
 			},
 			msg: "",
