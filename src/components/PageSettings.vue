@@ -23,7 +23,7 @@
                         <tr>
                             <td>Password</td>
                             <td>
-                                <FakePwInput v-model="config.wifi.ap_password"></FakePwInput>
+                                <FakePwInput v-model="ap_pw_text"></FakePwInput>
                             </td>
                         </tr>
                     </table>
