@@ -79,6 +79,9 @@ export const api_mixin = {
 		},
 		reload_config() {
 			axios.get("/api/config").then(response => {
+				// Fields are not sent by config request
+				response.data.wifi.client_password = null;
+				response.data.wifi.ap_password = null;
 				this.$set(this, "config", response.data)
 			}).catch(error => {
 				console.error(error)
@@ -113,7 +116,16 @@ export const api_mixin = {
 		},
 
 		api_post_save() {
-			axios.post("/api/config", this.config).then(response => {
+			// Create clone for changes
+			let request = Object.assign({}, this.config);
+			// Do not change password if the field was not touched
+			if (request.wifi.client_password === null) {
+				request.wifi.client_password = undefined;
+			}
+			if (request.wifi.ap_password === null) {
+				request.wifi.ap_password = undefined;
+            }
+			axios.post("/api/config", request).then(response => {
 				if (response.data === "OK") {
 					alert("Config updated the ESP will reboot");
 				} else {

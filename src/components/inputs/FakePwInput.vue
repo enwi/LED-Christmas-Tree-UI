@@ -1,8 +1,10 @@
+<!-- Fake password input that shows a default text when value is set to null (= set, but unknown value) -->
 <template>
     <input type="password"
            :disabled="disabled"
-           @input="$emit('input', $event.target.value)"
-           :value="value" />
+           @input="onInput($event)"
+           @focus="onFocus($event.target)"
+           :value="value_text" />
 </template>
 
 <script>
@@ -10,18 +12,30 @@
         name: "FakePwInput",
         props: {
             disabled: { type: Boolean, default: false },
-            has_value: { type: Boolean, default: false },
-            default_value: { default: "not set" },
-            v
+            default_value: { default: "********" },
+            value: { type: String, default: null }
         },
         computed: {
-            value: {
-                get: function () {
-                    return this.has_value ? v : default_value;
-                },
-                set: function (newValue) {
-                    this.v = newValue;
-                    this.has_value = true;
+            value_text: function () {
+                return this.value === null ? this.default_value : this.value;
+            },
+        },
+        methods: {
+            onFocus(input) {
+                if (this.value === null) {
+                    input.select();
+                }
+            },
+            onInput(event) {
+                if (this.value !== null) {
+                    this.$emit('input', event.target.value);
+                }
+                else if (event.data !== null) {
+                    // Replace dummy value with typed input
+                    this.$emit('input', event.data);
+                } else {
+                    // Other kind of input (like backspace), clear value
+                    this.$emit('input', '');
                 }
             }
         }
