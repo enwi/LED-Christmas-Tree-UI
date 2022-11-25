@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Slider",
+  name: "InputSlider",
   props: {
     value: { required: true },
     min: { type: Number, required: true },

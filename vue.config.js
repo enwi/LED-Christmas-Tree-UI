@@ -6,7 +6,7 @@ module.exports = {
 		extract: false,
 	},
 	devServer: {
-		disableHostCheck: true
+		allowedHosts: "all"
 	},
 	configureWebpack: {
 		optimization: {

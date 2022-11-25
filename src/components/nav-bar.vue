@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: "Navbar",
+  name: "nav-bar",
 };
 </script>
 

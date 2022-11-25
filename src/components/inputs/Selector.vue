@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "Selector",
+  name: "InputSelector",
   props: {
     disabled: { type: Boolean, default: false },
     choices: { type: Array, required: true },
